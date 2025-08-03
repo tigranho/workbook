@@ -3,613 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tavush Region - Armenia's Hidden Gem</title>
+    <title>Abovyan School</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .map-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                              url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
         
-        .map-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        .school-name {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
         }
         
-        .location-point {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background-color: #ef4444;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .location-point:hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3);
-        }
-        
-        .location-point.active {
-            background-color: #10b981;
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-        
-        .info-panel {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 0 0 12px 12px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            z-index: 20;
-            max-height: 50vh;
-            overflow-y: auto;
-        }
-        
-        .info-panel.active {
-            transform: translateY(0);
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .gallery img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            
-            .gallery img {
-                height: 80px;
-            }
-            
-            .location-point {
-                width: 12px;
-                height: 12px;
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Header Section -->
-    <header class="bg-gradient-to-r from-green-600 to-green-800 text-white py-6 shadow-lg">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <i class="fas fa-mountain text-3xl mr-3"></i>
-                    <h1 class="text-3xl font-bold">Discover Tavush</h1>
-                </div>
-                <nav class="flex space-x-6">
-                    <a href="#about" class="hover:text-green-200 transition">About</a>
-                    <a href="#map" class="hover:text-green-200 transition">Interactive Map</a>
-                    <a href="#attractions" class="hover:text-green-200 transition">Attractions</a>
-                    <a href="#travel-tips" class="hover:text-green-200 transition">Travel Tips</a>
-                </nav>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-school text-2xl"></i>
+                <span class="text-xl font-semibold">Abovyan</span>
             </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="hover:text-blue-200 transition">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition">About</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition">Academics</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition">Admissions</a></li>
+                    <li><a href="#" class="hover:text-blue-200 transition">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative h-96 bg-green-700 overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
-        <img src="https://images.unsplash.com/photo-1609943724626-469bdd8840a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-             alt="Tavush Landscape" class="w-full h-full object-cover">
-        <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-            <div class="text-white z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Armenia's Northeastern Treasure</h2>
-                <p class="text-xl md:text-2xl mb-6">Explore the lush forests, ancient monasteries, and welcoming villages of Tavush</p>
-                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition transform hover:scale-105 shadow-lg">
-                    Plan Your Visit
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center">
+        <div class="text-center px-4">
+            <h1 class="school-name text-5xl md:text-7xl lg:text-8xl font-bold text-blue-900 mb-6">
+                ABOVYAN
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                Excellence in Education Since 1995
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+                    Learn More
+                </button>
+                <button class="bg-white hover:bg-gray-100 text-blue-800 border border-blue-800 px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+                    Apply Now
                 </button>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Tavush Region</h2>
-                <div class="w-24 h-1 bg-green-500 mx-auto"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                    <img src="https://images.unsplash.com/photo-1609943724626-469bdd8840a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="Tavush Landscape" class="w-full h-auto rounded-lg shadow-xl">
-                </div>
-                <div class="md:w-1/2">
-                    <p class="text-gray-700 mb-4">
-                        Tavush is one of the most picturesque regions of Armenia, located in the northeastern part of the country. 
-                        Bordered by Georgia and Azerbaijan, this region is known for its dense forests, alpine meadows, and rich biodiversity.
-                    </p>
-                    <p class="text-gray-700 mb-4">
-                        The region's capital is Ijevan, but Tavush is perhaps best known for the resort town of Dilijan, often called 
-                        "Armenia's Switzerland" for its forested mountains and mild climate.
-                    </p>
-                    <p class="text-gray-700 mb-6">
-                        Tavush is home to several important historical and religious sites, including the monasteries of Haghartsin, 
-                        Goshavank, and Makaravank, as well as the medieval fortress of Berdavan.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fas fa-tree text-green-600 text-2xl mr-3"></i>
-                            </div>
-                            <h3 class="font-semibold text-gray-800 mt-2">Nature</h3>
-                            <p class="text-sm text-gray-600">Over 50% forest coverage with diverse flora and fauna</p>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fas fa-landmark text-green-600 text-2xl mr-3"></i>
-                            </div>
-                            <h3 class="font-semibold text-gray-800 mt-2">History</h3>
-                            <p class="text-sm text-gray-600">Ancient monasteries dating back to 10th-13th centuries</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Map Section -->
-    <section id="map" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Interactive Tavush Map</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Click on any location to discover its unique attractions and characteristics</p>
-                <div class="w-24 h-1 bg-green-500 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="map-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Tavush_in_Armenia.svg/1200px-Tavush_in_Armenia.svg.png" 
-                     alt="Tavush Map" class="map-image" id="tavush-map">
-                
-                <!-- Location Points -->
-                <div class="location-point" style="top: 30%; left: 45%;" data-location="dilijan"></div>
-                <div class="location-point" style="top: 45%; left: 55%;" data-location="ijevan"></div>
-                <div class="location-point" style="top: 25%; left: 60%;" data-location="haghartsin"></div>
-                <div class="location-point" style="top: 40%; left: 35%;" data-location="berd"></div>
-                <div class="location-point" style="top: 55%; left: 50%;" data-location="ayrum"></div>
-                <div class="location-point" style="top: 35%; left: 70%;" data-location="noyemberyan"></div>
-                <div class="location-point" style="top: 60%; left: 65%;" data-location="koghb"></div>
-                
-                <!-- Info Panel -->
-                <div class="info-panel" id="info-panel">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800" id="location-title">Select a Location</h3>
-                            <p class="text-gray-600" id="location-type">Click on any point on the map to learn more</p>
-                        </div>
-                        <button id="close-panel" class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div id="location-content">
-                        <p class="text-gray-700">Select a city or village from the map to display detailed information about its attractions, history, and travel tips.</p>
-                    </div>
-                    <div class="gallery" id="location-gallery"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Data (hidden) -->
-    <div id="location-data" style="display: none;">
-        <div data-location="dilijan">
-            <h3>Dilijan</h3>
-            <p>Dilijan is a spa town often called "Armenia's Switzerland" due to its forested mountains and mild climate. It's part of the Dilijan National Park and known for its healing mineral waters.</p>
-            <p><strong>Main Attractions:</strong> Old Dilijan complex, Sharambeyan Street, Haghartsin Monastery, Parz Lake, Jukhtak Vank</p>
-            <p><strong>Best Time to Visit:</strong> May to October for hiking, year-round for spa treatments</p>
-            <div class="gallery-data">
-                <img src="https://images.unsplash.com/photo-1609943724626-469bdd8840a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dilijan">
-                <img src="https://live.staticflickr.com/65535/51100393632_3c4c1d3e3b_b.jpg" alt="Old Dilijan">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Haghartsin_monastery_06.jpg/800px-Haghartsin_monastery_06.jpg" alt="Haghartsin Monastery">
-            </div>
-        </div>
-        <div data-location="ijevan">
-            <h3>Ijevan</h3>
-            <p>Ijevan is the administrative center of Tavush Province. Known for its carpet weaving traditions and furniture production, it's surrounded by beautiful forests and the Aghstev River.</p>
-            <p><strong>Main Attractions:</strong> Ijevan Dendropark, Makaravank Monastery, Ijevan Wine-Brandy Factory, Aghstev River Valley</p>
-            <p><strong>Best Time to Visit:</strong> Spring for blossoms, autumn for colors</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ijevan_center.jpg/800px-Ijevan_center.jpg" alt="Ijevan center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Makaravank_2.jpg/800px-Makaravank_2.jpg" alt="Makaravank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ijevan_Dendropark.jpg/800px-Ijevan_Dendropark.jpg" alt="Dendropark">
-            </div>
-        </div>
-        <div data-location="haghartsin">
-            <h3>Haghartsin Monastery</h3>
-            <p>This 10th-13th century monastery complex is hidden in the forests near Dilijan. The name translates to "Play of the Eagles" as eagles can often be seen circling above.</p>
-            <p><strong>Main Features:</strong> Three churches, refectory, gavit, and khachkars (cross-stones)</p>
-            <p><strong>Interesting Fact:</strong> The monastery was restored in 2008-2013 with funding from the UAE.</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Haghartsin_monastery_06.jpg/800px-Haghartsin_monastery_06.jpg" alt="Haghartsin">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Haghartsin_inside.jpg/800px-Haghartsin_inside.jpg" alt="Haghartsin interior">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Haghartsin_Refectory.jpg/800px-Haghartsin_Refectory.jpg" alt="Refectory">
-            </div>
-        </div>
-        <div data-location="berd">
-            <h3>Berd</h3>
-            <p>Berd is a border town with a rich history dating back to the Bronze Age. The Berdavan Fortress nearby offers panoramic views of the surrounding landscape.</p>
-            <p><strong>Main Attractions:</strong> Berdavan Fortress, Khoranashat Monastery, Tavush River Valley</p>
-            <p><strong>Local Specialty:</strong> Known for its fruit orchards and honey production</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Berdavan_fortress.jpg/800px-Berdavan_fortress.jpg" alt="Berdavan Fortress">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Khoranashat_Monastery.jpg/800px-Khoranashat_Monastery.jpg" alt="Khoranashat">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Berd_Town.jpg/800px-Berd_Town.jpg" alt="Berd town">
-            </div>
-        </div>
-        <div data-location="ayrum">
-            <h3>Ayrum</h3>
-            <p>A small town near the Georgian border known for its railway station and as a gateway to the beautiful forests of northern Tavush.</p>
-            <p><strong>Main Attractions:</strong> Nearby Getahovit village with its waterfall, Debed River Valley</p>
-            <p><strong>Transportation:</strong> Important railway junction connecting Armenia with Georgia</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ayrum_Station.jpg/800px-Ayrum_Station.jpg" alt="Ayrum Station">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Getahovit_Waterfall.jpg/800px-Getahovit_Waterfall.jpg" alt="Getahovit Waterfall">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Debed_river_near_Ayrum.jpg/800px-Debed_river_near_Ayrum.jpg" alt="Debed River">
-            </div>
-        </div>
-        <div data-location="noyemberyan">
-            <h3>Noyemberyan</h3>
-            <p>A border town with Azerbaijan, Noyemberyan is surrounded by beautiful landscapes and is known for its fruit production, particularly pomegranates.</p>
-            <p><strong>Main Attractions:</strong> Koghb Fortress, Kirants Monastery, local fruit markets</p>
-            <p><strong>Local Events:</strong> Annual pomegranate festival in October</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Noyemberyan_town.jpg/800px-Noyemberyan_town.jpg" alt="Noyemberyan">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Koghb_Fortress.jpg/800px-Koghb_Fortress.jpg" alt="Koghb Fortress">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Noyemberyan_market.jpg/800px-Noyemberyan_market.jpg" alt="Local market">
-            </div>
-        </div>
-        <div data-location="koghb">
-            <h3>Koghb</h3>
-            <p>A historic village near the border with Azerbaijan, known for its medieval fortress and beautiful surrounding nature.</p>
-            <p><strong>Main Attractions:</strong> Koghb Fortress (11th century), St. Astvatsatsin Church, hiking trails</p>
-            <p><strong>Local Tradition:</strong> Famous for its traditional Armenian bread (lavash) making</p>
-            <div class="gallery-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Koghb_Fortress.jpg/800px-Koghb_Fortress.jpg" alt="Koghb Fortress">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Koghb_village.jpg/800px-Koghb_village.jpg" alt="Koghb village">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Koghb_church.jpg/800px-Koghb_church.jpg" alt="St. Astvatsatsin">
-            </div>
-        </div>
-    </div>
-
-    <!-- Attractions Section -->
-    <section id="attractions" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Top Attractions in Tavush</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Discover the must-see places in this beautiful region</p>
-                <div class="w-24 h-1 bg-green-500 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Haghartsin_monastery_06.jpg/800px-Haghartsin_monastery_06.jpg" 
-                         alt="Haghartsin Monastery" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Haghartsin Monastery</h3>
-                        <p class="text-gray-600 mb-4">10th-13th century monastery complex hidden in the forests near Dilijan.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Near Dilijan</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://live.staticflickr.com/65535/51100393632_3c4c1d3e3b_b.jpg" 
-                         alt="Old Dilijan" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Old Dilijan Complex</h3>
-                        <p class="text-gray-600 mb-4">Recreated historic street showcasing traditional Armenian architecture.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Dilijan</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Berdavan_fortress.jpg/800px-Berdavan_fortress.jpg" 
-                         alt="Berdavan Fortress" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Berdavan Fortress</h3>
-                        <p class="text-gray-600 mb-4">Medieval fortress offering panoramic views of the surrounding landscape.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Near Berd</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Makaravank_2.jpg/800px-Makaravank_2.jpg" 
-                         alt="Makaravank" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Makaravank Monastery</h3>
-                        <p class="text-gray-600 mb-4">10th-13th century monastery known for its intricate stone carvings.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Near Ijevan</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Getahovit_Waterfall.jpg/800px-Getahovit_Waterfall.jpg" 
-                         alt="Getahovit Waterfall" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Getahovit Waterfall</h3>
-                        <p class="text-gray-600 mb-4">Beautiful waterfall hidden in the forests near Ayrum.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Near Ayrum</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ijevan_Dendropark.jpg/800px-Ijevan_Dendropark.jpg" 
-                         alt="Ijevan Dendropark" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Ijevan Dendropark</h3>
-                        <p class="text-gray-600 mb-4">Botanical garden with diverse plant species and walking paths.</p>
-                        <div class="flex items-center text-green-600">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Ijevan</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Travel Tips Section -->
-    <section id="travel-tips" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Travel Tips for Tavush</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Practical information for your visit to this beautiful region</p>
-                <div class="w-24 h-1 bg-green-500 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Getting Around</h3>
-                    <p class="text-gray-600">
-                        The best way to explore Tavush is by car. Roads are generally good, but some rural areas may have rough terrain. 
-                        Marshrutkas (minibuses) connect major towns but have limited schedules.
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Food & Dining</h3>
-                    <p class="text-gray-600">
-                        Try local specialties like Tavush honey, forest berries, and trout from mountain streams. 
-                        Many villages offer homestays with authentic Armenian home cooking.
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Accommodation</h3>
-                    <p class="text-gray-600">
-                        Dilijan has the most options from luxury resorts to budget guesthouses. 
-                        In smaller towns, consider homestays for an authentic experience with local families.
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-hiking"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Hiking & Nature</h3>
-                    <p class="text-gray-600">
-                        Tavush offers excellent hiking through forests and mountains. 
-                        Always carry water, wear sturdy shoes, and consider hiring a local guide for remote areas.
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Best Time to Visit</h3>
-                    <p class="text-gray-600">
-                        May-October for hiking and outdoor activities. 
-                        Winter offers beautiful snowy landscapes and lower prices, but some roads may be difficult.
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="text-green-600 text-3xl mb-4">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Safety Tips</h3>
-                    <p class="text-gray-600">
-                        Some areas near the Azerbaijani border may have restricted access. 
-                        Always check current travel advisories and follow local guidance.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-gray-800 text-white py-6">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Discover Tavush</h3>
-                    <p class="text-gray-400">
-                        Your comprehensive guide to exploring the natural beauty and cultural heritage of Armenia's Tavush region.
-                    </p>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-semibold">Abovyan School</h3>
+                    <p class="text-gray-400">Shaping the future through education</p>
                 </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Tavush</a></li>
-                        <li><a href="#map" class="text-gray-400 hover:text-white transition">Interactive Map</a></li>
-                        <li><a href="#attractions" class="text-gray-400 hover:text-white transition">Top Attractions</a></li>
-                        <li><a href="#travel-tips" class="text-gray-400 hover:text-white transition">Travel Tips</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
-                            <span class="text-gray-400">info@discovertavush.com</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-2 text-gray-400"></i>
-                            <span class="text-gray-400">+374 123 4567</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
-                            <span class="text-gray-400">Dilijan, Tavush, Armenia</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
-                            Subscribe to Newsletter
-                        </button>
-                    </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Discover Tavush. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Abovyan School. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const locationPoints = document.querySelectorAll('.location-point');
-            const infoPanel = document.getElementById('info-panel');
-            const locationTitle = document.getElementById('location-title');
-            const locationContent = document.getElementById('location-content');
-            const locationGallery = document.getElementById('location-gallery');
-            const closePanelBtn = document.getElementById('close-panel');
-            const locationData = document.getElementById('location-data');
-            
-            // Show info panel when location point is clicked
-            locationPoints.forEach(point => {
-                point.addEventListener('click', function() {
-                    const locationId = this.getAttribute('data-location');
-                    const locationInfo = locationData.querySelector(`[data-location="${locationId}"]`);
-                    
-                    // Update active state
-                    locationPoints.forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update panel content
-                    locationTitle.textContent = locationInfo.querySelector('h3').textContent;
-                    locationContent.innerHTML = locationInfo.innerHTML;
-                    
-                    // Clear previous gallery
-                    locationGallery.innerHTML = '';
-                    
-                    // Add images to gallery if they exist
-                    const galleryData = locationInfo.querySelector('.gallery-data');
-                    if (galleryData) {
-                        const images = galleryData.querySelectorAll('img');
-                        images.forEach(img => {
-                            const imgElement = document.createElement('img');
-                            imgElement.src = img.src;
-                            imgElement.alt = img.alt;
-                            locationGallery.appendChild(imgElement);
-                        });
-                    }
-                    
-                    // Show panel
-                    infoPanel.classList.add('active');
-                });
-            });
-            
-            // Close panel when close button is clicked
-            closePanelBtn.addEventListener('click', function() {
-                infoPanel.classList.remove('active');
-                locationPoints.forEach(p => p.classList.remove('active'));
-            });
-            
-            // Close panel when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!infoPanel.contains(e.target) && !Array.from(locationPoints).some(point => point.contains(e.target))) {
-                    infoPanel.classList.remove('active');
-                    locationPoints.forEach(p => p.classList.remove('active'));
-                }
-            });
-            
-            // Prevent panel from closing when clicking inside it
-            infoPanel.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector
+        // Simple mobile menu toggle functionality
+        document.querySelector('button').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('block');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('right-4');
+            nav.classList.toggle('bg-blue-900');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('rounded-lg');
+            nav.classList.toggle('shadow-xl');
+        });
+    </script>
 </body>
 </html>
