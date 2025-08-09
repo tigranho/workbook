@@ -3,118 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abovyan School</title>
+    <title>Tavush Berd Travel Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-        
-        .school-name {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1.5s ease-in-out;
         }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
-    <!-- Header -->
-    <header class="bg-blue-800 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-school text-2xl"></i>
-                <span class="text-xl font-semibold">Abovyan</span>
+<body class="font-sans bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div>
+                        <span class="text-2xl font-bold text-blue-600">Tavush Berd</span>
+                        <span class="text-sm text-gray-500">Travel Agency</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Tours</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="hover:text-blue-200 transition">Home</a></li>
-                    <li><a href="#" class="hover:text-blue-200 transition">About</a></li>
-                    <li><a href="#" class="hover:text-blue-200 transition">Academics</a></li>
-                    <li><a href="#" class="hover:text-blue-200 transition">Admissions</a></li>
-                    <li><a href="#" class="hover:text-blue-200 transition">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="md:hidden text-xl">
-                <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center text-white">
+        <div class="max-w-4xl mx-auto px-4 fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Tavush Berd</h1>
+            <p class="text-xl md:text-2xl mb-8">Discover the hidden gem of Armenia</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105">
+                Explore Tours
             </button>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="flex-grow flex items-center justify-center">
-        <div class="text-center px-4">
-            <h1 class="school-name text-5xl md:text-7xl lg:text-8xl font-bold text-blue-900 mb-6">
-                ABOVYAN
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                Excellence in Education Since 1995
-            </p>
-            <div class="flex justify-center space-x-4">
-                <button class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
-                    Learn More
-                </button>
-                <button class="bg-white hover:bg-gray-100 text-blue-800 border border-blue-800 px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
-                    Apply Now
-                </button>
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Tavush Berd?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-map-marked-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Unique Locations</h3>
+                    <p class="text-gray-600">Explore breathtaking landscapes and historical sites that few tourists get to see.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-hiking text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Adventure Tours</h3>
+                    <p class="text-gray-600">Experience thrilling hikes through untouched nature and ancient fortresses.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-home text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Local Hospitality</h3>
+                    <p class="text-gray-600">Stay with local families and experience authentic Armenian culture and cuisine.</p>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-semibold">Abovyan School</h3>
-                    <p class="text-gray-400">Shaping the future through education</p>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Tavush Berd</h3>
+                    <p class="text-gray-400">Your gateway to the hidden treasures of Armenia's Tavush region.</p>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-youtube text-xl"></i>
-                    </a>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tours</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Tavush Region, Armenia</p>
+                    <p class="text-gray-400 mb-2"><i class="fas fa-phone mr-2"></i> +374 123 4567</p>
+                    <p class="text-gray-400"><i class="fas fa-envelope mr-2"></i> info@tavushberd.com</p>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; 2023 Abovyan School. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Tavush Berd Travel Agency. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple mobile menu toggle functionality
-        document.querySelector('button').addEventListener('click', function() {
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('hidden');
-            nav.classList.toggle('block');
-            nav.classList.toggle('absolute');
-            nav.classList.toggle('top-16');
-            nav.classList.toggle('right-4');
-            nav.classList.toggle('bg-blue-900');
-            nav.classList.toggle('p-4');
-            nav.classList.toggle('rounded-lg');
-            nav.classList.toggle('shadow-xl');
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
         });
     </script>
 </body>
